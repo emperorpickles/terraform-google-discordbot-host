@@ -1,0 +1,23 @@
+#cloud-config
+
+write_files:
+  - path: /etc/systemd/system/cloudservice.service
+    permissions: 0644
+    owner: root
+    content: |
+      [Unit]
+      Description=Start the discord bot docker container
+      Wants=gcr-online.target
+      After=gcr-online.target
+
+      [Service]
+      Environment="HOME=/home/cloudservice"
+      ExecStartPre=/usr/bin/docker-credential-gcr configure-docker --registries ${region}-docker.pkg.dev
+      ExecStartPre=-/usr/bin/docker image rm -f ${region}-docker.pkg.dev/${project_id}/${artifact_repo}/${image}
+      ExecStart=/usr/bin/docker run --rm --name=${image} ${region}-docker.pkg.dev/${project_id}/${artifact_repo}/${image}:latest
+      ExecStop=/usr/bin/docker stop ${image}
+      ExecStopPost=/usr/bin/docker rm ${image}
+
+runcmd:
+  - systemctl daemon-reload
+  - systemctl start cloudservice.service
