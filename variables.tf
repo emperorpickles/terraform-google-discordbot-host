@@ -1,14 +1,3 @@
-# Terraform Settings
-variable "organization" {
-  type        = string
-  description = "Terraform Cloud Organization"
-}
-
-variable "workspace" {
-  type        = string
-  description = "Terraform Cloud Workspace"
-}
-
 # GCP Project Settings
 variable "project_id" {
   type        = string
@@ -28,7 +17,6 @@ variable "zone" {
 variable "roles_list" {
   type        = list(string)
   description = "Roles for Cloud Build service account"
-  default     = ["roles/editor", "roles/secretmanager.secretAccessor"]
 }
 
 variable "artifact_repo" {

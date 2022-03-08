@@ -1,27 +1,3 @@
-terraform {
-  cloud {
-    organization = var.organization
-
-    workspaces {
-      name = var.workspace
-    }
-  }
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "4.12.0"
-    }
-  }
-}
-
-provider "google" {
-  project = var.project_id
-  region  = var.region
-  zone    = var.zone
-}
-
-
-
 # Create userdata cloudinit data source
 data "template_file" "userdata" {
   template = file("${path.module}/templates/userdata.yaml")
@@ -54,7 +30,8 @@ resource "google_compute_instance" "container_vm" {
   }
 
   metadata = {
-    user-data = "${data.template_file.userdata.rendered}"
+    user-data              = "${data.template_file.userdata.rendered}",
+    google-logging-enabled = true
   }
 
   tags = ["http-server", "https-server"]
