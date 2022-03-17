@@ -14,11 +14,6 @@ variable "zone" {
   description = "GCP Project Zone"
 }
 
-variable "roles_list" {
-  type        = list(string)
-  description = "Roles for Cloud Build service account"
-}
-
 variable "artifact_repo" {
   type        = string
   description = "GCP Artifact Repository name"
@@ -46,6 +41,7 @@ variable "branch" {
 variable "vm_type" {
   type        = string
   description = "CE Instance Type"
+  default     = "e2-micro"
 }
 
 # Bot Settings

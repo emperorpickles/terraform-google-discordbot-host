@@ -62,10 +62,14 @@ resource "google_service_account" "cloudbuild_sa" {
   display_name = "Service account for Cloud Build"
 }
 
+locals {
+  roles_list = ["roles/editor", "roles/secretmanager.secretAccessor"]
+}
+
 resource "google_project_iam_member" "cloudbuild_policy" {
   project = var.project_id
-  count   = length(var.roles_list)
-  role    = var.roles_list[count.index]
+  count   = length(local.roles_list)
+  role    = local.roles_list[count.index]
   member  = "serviceAccount:${google_service_account.cloudbuild_sa.email}"
 }
 
