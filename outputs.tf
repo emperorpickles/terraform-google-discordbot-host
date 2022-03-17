@@ -27,13 +27,3 @@ output "cloudbuild_trigger_id" {
   value       = google_cloudbuild_trigger.build_trigger.id
   description = "Cloud Build trigger ID"
 }
-
-output "firestore_id" {
-  value       = google_app_engine_application.firestore_instance[0].id
-  description = "Firestore DB instance ID"
-}
-
-output "firestore_name" {
-  value       = google_app_engine_application.firestore_instance[0].name
-  description = "Firestore DB instance name"
-}

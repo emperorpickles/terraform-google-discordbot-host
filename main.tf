@@ -117,14 +117,3 @@ resource "google_cloudbuild_trigger" "build_trigger" {
     }
   }
 }
-
-
-# Optional Firestore Database
-resource "google_app_engine_application" "firestore_instance" {
-  count = var.db_enable == true ? 1 : 0
-
-  project     = var.project_id
-  location_id = var.region
-
-  database_type = "CLOUD_FIRESTORE"
-}

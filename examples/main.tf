@@ -28,6 +28,4 @@ module "bot_deploy" {
   bot_name  = "bot_name"
   bot_token = "bot_token"
   prefix    = "bot_prefix"
-
-  db_enable = false
 }

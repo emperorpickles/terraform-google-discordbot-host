@@ -27,9 +27,6 @@ module "module_name" {
   bot_name  = "bot_name"
   bot_token = "bot_token"
   prefix    = "bot_prefix"
-
-  db_enable = false
-
 }
 
 ```
@@ -52,9 +49,6 @@ module "module_name" {
   bot_name  = "bot_name"
   bot_token = "bot_token"
   prefix    = "bot_prefix"
-
-  db_enable = false
-
 }
 
 ```
@@ -78,8 +72,6 @@ module "module_name" {
 | bot_name      | Name of the bot being deployed      |            | string |    Yes    | N/A                |
 | bot_token     | Discord API token for the bot       |            | string |    Yes    | N/A                |
 | prefix        | Command prefix used by the bot      |            | string |    Yes    | N/A                |
-| db_enable     | Optional creation of a Firestore DB | true/false |  bool  |    No     | N/A                |
-
 
 #### Outputs
 
@@ -91,5 +83,3 @@ module "module_name" {
 | ar_id                 | artifact registry id             | N/A   |
 | cloudbuild_sa_name    | Cloud Build service account name | N/A   |
 | cloudbuild_trigger_id | Cloud Build trigger id           | N/A   |
-| firestore_id          | Firestore DB id                  | N/A   |
-| firestore_name        | name of the Firestore instance   | N/A   |

@@ -60,10 +60,3 @@ variable "prefix" {
   type        = string
   description = "Bot Command Prefix"
 }
-
-# Firestore Settings
-variable "db_enable" {
-  type        = bool
-  description = "Enable/Disable Firestore Instance"
-  default     = false
-}
